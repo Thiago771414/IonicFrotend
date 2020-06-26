@@ -1,3 +1,5 @@
+
+// controller da view app.component.html
 import { Component, OnInit } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -5,15 +7,24 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
+
+  // selector: 'app-root' está ligado com o app-root do index.html
+
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
+
 })
+
+// a classe AppComponent tem três atributos title, url, icon
+// a tela dessa classe é app.component.html,
+// para usar um atributo da classe na tela {{ atributo }}
+//controlador folder.module.ts
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
+      title: 'Home',
       url: '/folder/Inbox',
       icon: 'mail'
     },
@@ -28,7 +39,7 @@ export class AppComponent implements OnInit {
       icon: 'heart'
     },
     {
-      title: 'Archived',
+      title: 'Calculadora',
       url: '/folder/Archived',
       icon: 'archive'
     },

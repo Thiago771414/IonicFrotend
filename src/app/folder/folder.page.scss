@@ -1,28 +1,48 @@
-ion-menu-button {
-  color: var(--ion-color-primary);
-}
-
-#container {
+h1 {
+  font-family: ‘Pacifico’;
+  color: rgb(243, 234, 234);
   text-align: center;
+  font-size: 50px;
+  padding-top: 50px;
+  }
+
+  h1 span {
+  font-family: ‘Roboto’;
+  font-size: 18px;
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  margin-top: 55px;
+  margin-left: -35px;
+  }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+  ion-content.background{
+    --background: url(../../assets/imagem/Madeira.jpg) 0 0/100% 100% no-repeat;
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
-}
+  }
 
-#container a {
-  text-decoration: none;
-}
+  .bg-transparent {
+    background: transparent;
+    width: 75%;
+    margin: auto;
+    margin-top: 60px;
+  }
+
+  .btn-outline-primary {
+    margin-top: 20px;
+  }
+
+  .btn-outline-light {
+    margin-top: 20px;
+  }
+
+  .icone {
+    align-self: center;
+  }
+
+ 
+
+
+ 
+
+
+
+
