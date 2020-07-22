@@ -5,12 +5,19 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'folder/Inbox',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
+  
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  },
+  //Redireciona para categorias a partir do menu
+  {
+    path: 'categorias',
+    loadChildren: () => import('./users/categorias/categorias.module').then( m => m.CategoriasPageModule)
   }
+  
 ];
 
 @NgModule({

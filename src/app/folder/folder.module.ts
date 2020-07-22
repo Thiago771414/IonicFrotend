@@ -5,22 +5,20 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { FolderPageRoutingModule } from './folder-routing.module';
-
+//importar o componente
 import { FolderPage } from './folder.page';
-
 //import {CalculadoraModule} from '../calculadora/calculadora.module';
 
-import {HomeModule} from '../home/home.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FolderPageRoutingModule,
+    FolderPageRoutingModule
     //CalculadoraModule
-    HomeModule
   ],
+  //declarar o componente
   declarations: [FolderPage]
 })
 export class FolderPageModule {}
