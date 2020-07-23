@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from 'src/services/domain/categoria.service';
+import { CategoriaDTO } from 'src/models/categoria.dto';
+import { API_CONFIG } from 'src/config/api.config';
 
 @Component({
   selector: 'app-categorias',
@@ -8,6 +10,10 @@ import { CategoriaService } from 'src/services/domain/categoria.service';
 })
 export class CategoriasPage implements OnInit {
 
+  bucketUrl: string = API_CONFIG.bucketBaseURL;
+
+  items: CategoriaDTO[];
+
   constructor(public categoriaService: CategoriaService) { }
 
   ngOnInit(){
@@ -15,7 +21,7 @@ export class CategoriasPage implements OnInit {
     // => função anônima declara a função dentro de outra função ao invés de chamar a função criada em outro lugar.
     this.categoriaService.findAll()
     .subscribe(response => {
-      console.log(response);
+      this.items = response;
     },
     error => {
       console.log(error);
