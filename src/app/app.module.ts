@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CategoriaService } from 'src/services/domain/categoria.service';
+import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
 
 //importar o submodulo
 //import {CalculadoraModule} from './calculadora/calculadora.module';
@@ -35,7 +36,8 @@ import { CategoriaService } from 'src/services/domain/categoria.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     //define se o serviço criado se é de uma página específica ou em um escopo global.
     //nesse caso possui um único objeto servindo toda a aplicação.
-    CategoriaService
+    CategoriaService,
+    ErrorInterceptorProvider
   ],
   //indica quem é o componente principal.
   bootstrap: [AppComponent]
