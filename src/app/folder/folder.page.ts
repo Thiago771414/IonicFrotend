@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 //desbilitar menu página inicial
 import { MenuController } from '@ionic/angular';
+import { CredenciaisDTO } from 'src/models/credenciais.dto';
 
 @Component({
   selector: 'app-folder',
@@ -11,6 +12,11 @@ import { MenuController } from '@ionic/angular';
 export class FolderPage implements OnInit {
   public folder: string;
 
+  creds : CredenciaisDTO = {
+    email: "",
+    senha: ""
+  };
+
   constructor(private activatedRoute: ActivatedRoute, private router: Router, public menu: MenuController) { }
 
   ngOnInit() {
@@ -18,6 +24,7 @@ export class FolderPage implements OnInit {
   }
 
   login(){
+    console.log(this.creds);
     this.router.navigate(['/categorias']);
   }
   
