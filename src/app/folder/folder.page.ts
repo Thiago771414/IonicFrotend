@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 //desbilitar menu página inicial
 import { MenuController } from '@ionic/angular';
 import { CredenciaisDTO } from 'src/models/credenciais.dto';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-folder',
@@ -17,15 +18,19 @@ export class FolderPage implements OnInit {
     senha: ""
   };
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, public menu: MenuController) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, public menu: MenuController, public auth: AuthService) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
-  login(){
-    console.log(this.creds);
-    this.router.navigate(['/categorias']);
+  login() {
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        console.log(response.headers.get('Authorization'));
+        this.router.navigate(['/categorias']);
+      },
+      error => {});   
   }
   
   //desabilita menu da tela inicial, mas abre o menu nas outras telas.
