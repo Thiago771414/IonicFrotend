@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CategoriaService } from 'src/services/domain/categoria.service';
 import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
 import { AuthService } from 'src/services/auth.service';
+import { StorageService } from 'src/services/storage.service';
 
 //importar o submodulo
 //import {CalculadoraModule} from './calculadora/calculadora.module';
@@ -39,7 +40,8 @@ import { AuthService } from 'src/services/auth.service';
     //nesse caso possui um único objeto servindo toda a aplicação.
     CategoriaService,
     ErrorInterceptorProvider,
-    AuthService
+    AuthService,
+    StorageService
   ],
   //indica quem é o componente principal.
   bootstrap: [AppComponent]
