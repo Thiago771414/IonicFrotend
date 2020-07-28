@@ -13,6 +13,7 @@ import { CategoriaService } from 'src/services/domain/categoria.service';
 import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
 import { AuthService } from 'src/services/auth.service';
 import { StorageService } from 'src/services/storage.service';
+import { ClienteService } from 'src/services/domain/cliente.service';
 
 //importar o submodulo
 //import {CalculadoraModule} from './calculadora/calculadora.module';
@@ -41,7 +42,8 @@ import { StorageService } from 'src/services/storage.service';
     CategoriaService,
     ErrorInterceptorProvider,
     AuthService,
-    StorageService
+    StorageService,
+    ClienteService
   ],
   //indica quem é o componente principal.
   bootstrap: [AppComponent]
