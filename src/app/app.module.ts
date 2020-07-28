@@ -14,6 +14,7 @@ import { ErrorInterceptorProvider } from 'src/interceptors/error-interceptor';
 import { AuthService } from 'src/services/auth.service';
 import { StorageService } from 'src/services/storage.service';
 import { ClienteService } from 'src/services/domain/cliente.service';
+import { AuthInterceptorProvider } from 'src/interceptors/auth-interceptor';
 
 //importar o submodulo
 //import {CalculadoraModule} from './calculadora/calculadora.module';
@@ -40,6 +41,7 @@ import { ClienteService } from 'src/services/domain/cliente.service';
     //define se o serviço criado se é de uma página específica ou em um escopo global.
     //nesse caso possui um único objeto servindo toda a aplicação.
     CategoriaService,
+    AuthInterceptorProvider,
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
