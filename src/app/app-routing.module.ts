@@ -16,12 +16,15 @@ const routes: Routes = [
   {
     path: 'categorias',
     loadChildren: () => import('./users/categorias/categorias.module').then( m => m.CategoriasPageModule)
-  },  {
+  },
+  {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  }
-
-  
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+  }  
 ];
 
 @NgModule({

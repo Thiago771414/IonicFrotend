@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
 
@@ -39,8 +40,8 @@ export class AppComponent implements OnInit {
       icon: 'heart'
     },
     {
-      title: 'Calculadora',
-      url: '/folder/Archived',
+      title: 'Logout',
+      url: '/folder/logout',
       icon: 'archive'
     },
     {
@@ -59,7 +60,9 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public auth: AuthService
+
   ) {
     this.initializeApp();
   }
@@ -75,6 +78,10 @@ export class AppComponent implements OnInit {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+    }
+    
+    if (page => page.title == 'Logout'){
+        this.auth.logout();
     }
   }
 }
