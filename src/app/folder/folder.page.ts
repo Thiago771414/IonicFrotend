@@ -34,12 +34,21 @@ export class FolderPage implements OnInit {
   }
   
   //desabilita menu da tela inicial, mas abre o menu nas outras telas.
-  ionViewWillEnter() {
-    this.menu.enable(false);
+  async ionViewWillEnter() {
+    await this.menu.enable(false);
   }
 
-  ionViewDidLeave() {
-    this.menu.enable(true);
+  async ionViewDidLeave() {
+    await this.menu.enable(true);
+  }
+
+  ionViewDidEnter() {
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.sucessfulLogin(response.headers.get('Authorization'));
+        this.router.navigate(['/categorias']);
+      },
+      error => {});   
   }
 
 }

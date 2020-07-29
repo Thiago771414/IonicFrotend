@@ -27,6 +27,19 @@ export class AuthService {
             })
     }
 
+    refreshToken(){
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/refresh_token`,
+            {}, 
+            {
+               //para pegar o cabeçalho da requisição
+               observe: 'response',
+               //login retorna um corpo vazio
+               //para não dar erro de parse json de corpo vazio
+               responseType: 'text'
+            })
+    }
+
     sucessfulLogin(authorizationValue : string){
         let tok = authorizationValue.substring(7);
         let user : LocalUser = {
