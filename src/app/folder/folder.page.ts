@@ -32,6 +32,10 @@ export class FolderPage implements OnInit {
       },
       error => {});   
   }
+
+  signup() {
+    this.router.navigate(['/signup']);
+  }
   
   //desabilita menu da tela inicial, mas abre o menu nas outras telas.
   async ionViewWillEnter() {

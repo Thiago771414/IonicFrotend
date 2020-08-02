@@ -50,8 +50,8 @@ export class AppComponent implements OnInit {
       icon: 'trash'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
+      title: 'sigUp',
+      url: '/signup',
       icon: 'warning'
     }
   ];
