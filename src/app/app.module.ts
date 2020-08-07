@@ -15,6 +15,8 @@ import { AuthService } from 'src/services/auth.service';
 import { StorageService } from 'src/services/storage.service';
 import { ClienteService } from 'src/services/domain/cliente.service';
 import { AuthInterceptorProvider } from 'src/interceptors/auth-interceptor';
+//import { CidadeService } from 'src/services/domain/cidade.service';
+//import { EstadoService } from 'src/services/domain/estado.service';
 
 
 //importar o submodulo
@@ -47,6 +49,8 @@ import { AuthInterceptorProvider } from 'src/interceptors/auth-interceptor';
     AuthService,
     StorageService,
     ClienteService
+    //CidadeService,
+    //EstadoService
   ],
   //indica quem é o componente principal.
   bootstrap: [AppComponent]

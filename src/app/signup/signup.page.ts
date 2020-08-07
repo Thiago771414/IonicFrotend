@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { EstadoDTO } from 'src/models/estado.dto';
+import { CidadeDTO } from 'src/models/cidade.dto';
+import { CidadeService } from 'src/services/domain/cidade.service';
+import { EstadoService } from 'src/services/domain/estado.service';
 
 @Component({
   selector: 'app-signup',
@@ -26,10 +30,30 @@ export class SignupPage implements OnInit {
       cidadeId : new FormControl(null, [Validators.required])
   });
   
-  constructor() {      
+  estados: EstadoDTO[];
+  cidades: CidadeDTO[];
+
+  constructor(public cidadeService: CidadeService, public estadoService: EstadoService) {      
   };
   
-  ngOnInit() {     
+  ngOnInit() {  
+    this.estadoService.findAll()
+    .subscribe(response => {
+      this.estados = response;
+      this.formGroup.controls.estadoId.setValue(this.estados[0].id);
+      this.updateCidades();
+    },
+    error => {});
+  }
+
+  updateCidades(){
+    let estado_id = this.formGroup.value.estadoId;
+    this.cidadeService.findAll(estado_id)
+      .subscribe(response => {
+        this.cidades = response;
+        this.formGroup.controls.cidadeId.setValue(null);
+      },
+      error => {});
   }
 
   signupUser(){
