@@ -45,8 +45,8 @@ export class AppComponent implements OnInit {
       icon: 'archive'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
+      title: 'Produtos',
+      url: '/produtos',
       icon: 'trash'
     },
     {
