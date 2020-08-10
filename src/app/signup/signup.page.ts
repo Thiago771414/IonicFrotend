@@ -4,6 +4,9 @@ import { EstadoDTO } from 'src/models/estado.dto';
 import { CidadeDTO } from 'src/models/cidade.dto';
 import { CidadeService } from 'src/services/domain/cidade.service';
 import { EstadoService } from 'src/services/domain/estado.service';
+import { ClienteService } from 'src/services/domain/cliente.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +18,7 @@ export class SignupPage implements OnInit {
   formGroup = new FormGroup({
       nome: new FormControl('Joaquim', [Validators.required, Validators.minLength(5), Validators.maxLength(120)]),
       email: new FormControl('joaquim@gmail.com', [Validators.required, Validators.email]),
-      //tipo: new FormControl('1', [Validators.required]),
+      tipo: new FormControl('1'),
       cpfOuCnpj: new FormControl('06134596280', [Validators.required, Validators.minLength(11), Validators.maxLength(14)]),
       senha: new FormControl('123', [Validators.required]),
       logradouro: new FormControl('Rua Vida', [Validators.required]),
@@ -33,7 +36,12 @@ export class SignupPage implements OnInit {
   estados: EstadoDTO[];
   cidades: CidadeDTO[];
 
-  constructor(public cidadeService: CidadeService, public estadoService: EstadoService) {      
+  constructor(
+    public cidadeService: CidadeService, 
+    public estadoService: EstadoService,
+    public clienteService: ClienteService,
+    public alertCtrl: AlertController,
+    private router: Router) {      
   };
   
   ngOnInit() {  
@@ -57,7 +65,27 @@ export class SignupPage implements OnInit {
   }
 
   signupUser(){
-    console.log("enviou o form");
+    this.clienteService.insert(this.formGroup.value)
+    .subscribe(response => {
+      this.showInsertOk();
+    },
+    error => {});
   }
 
+  async showInsertOk() {
+    const alert = await this.alertCtrl.create({
+      header: 'Sucesso!',
+      message: 'Cadastro efetuado com sucesso',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.router.navigate(['folder/:id']);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }
+

@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry, tap } from 'rxjs/operators';
 import { StorageService } from 'src/services/storage.service';
 import { AlertController } from '@ionic/angular';
+import { FieldMessage } from 'src/models/fieldmessage';
+import { ValidatorFn } from '@angular/forms';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -39,6 +41,10 @@ export class ErrorInterceptor implements HttpInterceptor {
                     this.handle403();
                     break;
 
+                    case 422:
+                    this.handle422(errorObj);
+                    break;
+
                     default:
                     this.handleDefaultError(errorObj);
                 }
@@ -48,7 +54,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         )
     }
 
-    handle403(){
+    handle403() {
         this.storage.setLocalUser(null);
     }
 
@@ -67,6 +73,19 @@ export class ErrorInterceptor implements HttpInterceptor {
         await alert.present();
     }
 
+    async handle422(errorObj) {
+        let alert = await this.alertCtrl.create({
+            header: 'Email já Cadastrado!',
+            message: this.listErrors(errorObj.errors, errorObj.listErrors),
+            buttons: [
+                {
+                    text: 'Ok'
+                }
+            ]
+        });
+        alert.present();
+    }
+
     async handleDefaultError(errorObj) {
         const alert = await this.alertCtrl.create({
             //cssClass: 'my-custom-class',
@@ -80,6 +99,14 @@ export class ErrorInterceptor implements HttpInterceptor {
             ]
         });
         await alert.present();
+    }
+
+    private listErrors(maxLength : number, message : FieldMessage[]) : string {
+        let s : string = '';
+        for (var i=0; i<maxLength; i++) {
+            s = s + '<p><strong>' + message[i].fieldName + "</strong>: " + message[i].message + '</p>';
+        }
+        return s;
     }
 }
 
