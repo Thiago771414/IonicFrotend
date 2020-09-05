@@ -24,7 +24,8 @@ const routes: Routes = [
   {
     path: 'logout',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },   {
+  },   
+  {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },

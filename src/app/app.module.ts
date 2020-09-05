@@ -15,6 +15,7 @@ import { AuthService } from 'src/services/auth.service';
 import { StorageService } from 'src/services/storage.service';
 import { ClienteService } from 'src/services/domain/cliente.service';
 import { AuthInterceptorProvider } from 'src/interceptors/auth-interceptor';
+import { ProdutoService } from 'src/services/domain/produto.service';
 //import { CidadeService } from 'src/services/domain/cidade.service';
 //import { EstadoService } from 'src/services/domain/estado.service';
 
@@ -48,7 +49,8 @@ import { AuthInterceptorProvider } from 'src/interceptors/auth-interceptor';
     ErrorInterceptorProvider,
     AuthService,
     StorageService,
-    ClienteService
+    ClienteService,
+    ProdutoService
     //CidadeService,
     //EstadoService
   ],

@@ -3,6 +3,9 @@ import { CategoriaService } from 'src/services/domain/categoria.service';
 import { CategoriaDTO } from 'src/models/categoria.dto';
 import { API_CONFIG } from 'src/config/api.config';
 import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categorias',
@@ -15,7 +18,8 @@ export class CategoriasPage implements OnInit {
 
   items: CategoriaDTO[];
 
-  constructor(public categoriaService: CategoriaService, private router: Router) { }
+  constructor(public categoriaService: CategoriaService, public navCtrl: NavController, private router: Router) 
+  { }
 
   ngOnInit(){
     //chamada assíncrona aqui é com subscribe ou callback
@@ -27,8 +31,8 @@ export class CategoriasPage implements OnInit {
     error => {});
   }
 
-  showProdutos(){
-    this.router.navigate(['produtos']);
+  showProdutos(categoria_id : string){
+    this.router.navigate(['produtos', {categoria_id: categoria_id}]);
   }
 
 }
