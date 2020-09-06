@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdutoDTO } from 'src/models/produto.dto';
 import { ProdutoService } from 'src/services/domain/produto.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { API_CONFIG } from 'src/config/api.config';
 
 @Component({
@@ -13,7 +13,7 @@ export class ProdutosPage implements OnInit {
 
   items: ProdutoDTO[];
 
-  constructor(public produtoService: ProdutoService, private route: ActivatedRoute) { }
+  constructor(public produtoService: ProdutoService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     let categoria_id = this.route.snapshot.paramMap.get('categoria_id');
@@ -36,5 +36,9 @@ export class ProdutosPage implements OnInit {
         error => {});
     }
   }  
+
+  showDetail() {
+    this.router.navigate(['produto-detail']);
+  }
 
 }
