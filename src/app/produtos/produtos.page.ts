@@ -37,8 +37,9 @@ export class ProdutosPage implements OnInit {
     }
   }  
 
-  showDetail() {
-    this.router.navigate(['produto-detail']);
+  showDetail(produto_id : string) {
+    this.router.navigate(['produto-detail', {produto_id : produto_id}]);
   }
 
 }
+
