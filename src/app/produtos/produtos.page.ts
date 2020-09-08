@@ -41,5 +41,9 @@ export class ProdutosPage implements OnInit {
     this.router.navigate(['produto-detail', {produto_id : produto_id}]);
   }
 
+  cart() {
+    this.router.navigate(['cart']);
+  }
+
 }
 

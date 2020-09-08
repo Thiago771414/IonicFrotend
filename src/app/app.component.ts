@@ -53,6 +53,10 @@ export class AppComponent implements OnInit {
       title: 'sigUp',
       url: '/signup',
       icon: 'warning'
+    },
+    {
+      title: 'Carrinho',
+      url: '/cart'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];

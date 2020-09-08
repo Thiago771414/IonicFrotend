@@ -40,4 +40,8 @@ export class ProdutoDetailPage implements OnInit {
     this.cartService.addProduto(produto);
     this.router.navigate(['cart']);
   }
+
+  cart() {
+    this.router.navigate(['cart']);
+  }
 }

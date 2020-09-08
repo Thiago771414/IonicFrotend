@@ -35,4 +35,8 @@ export class CategoriasPage implements OnInit {
     this.router.navigate(['produtos', {categoria_id: categoria_id}]);
   }
 
+  cart() {
+    this.router.navigate(['cart']);
+  }
+
 }
