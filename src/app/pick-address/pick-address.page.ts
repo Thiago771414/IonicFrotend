@@ -3,6 +3,8 @@ import { EnderecoDTO } from 'src/models/endereco.dto';
 import { StorageService } from 'src/services/storage.service';
 import { ClienteService } from 'src/services/domain/cliente.service';
 import { Router } from '@angular/router';
+import { PedidoDTO } from 'src/models/pedido.dto';
+import { CartService } from 'src/services/domain/cart.service';
 
 @Component({
   selector: 'app-pick-address',
@@ -13,7 +15,9 @@ export class PickAddressPage implements OnInit {
 
   items: EnderecoDTO[];
 
-  constructor(public storage: StorageService, public clienteService: ClienteService, private router: Router) { }
+  pedido: PedidoDTO;
+
+  constructor(public storage: StorageService, public clienteService: ClienteService, private router: Router, public cartService: CartService) { }
 
   ngOnInit() {
     let localUser = this.storage.getLocalUser();
@@ -21,6 +25,15 @@ export class PickAddressPage implements OnInit {
        this.clienteService.findByEmail(localUser.email)
        .subscribe(response => {
         this.items = response['enderecos'];
+
+        let cart = this.cartService.getCart();
+
+        this.pedido = {
+          cliente: {id: response['id']},
+          enderecoDeEntrega: null,
+          pagamento: null,
+          itens : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
+        }
        },
        error => {
          if(error.status == 403) {
@@ -31,5 +44,12 @@ export class PickAddressPage implements OnInit {
     else {
       this.router.navigate(['folder/:id']);
     }
+  }
+
+  nextPage(item: EnderecoDTO) {
+    this.pedido.enderecoDeEntrega = {id: item.id};
+    console.log(this.pedido);
+    //this.pedido.enderecoDeEntrega = {id: item.id};
+    //this.router.navigate(['PaymentPage', {pedido: this.pedido}]);
   }
 }
