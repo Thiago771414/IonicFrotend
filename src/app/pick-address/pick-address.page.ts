@@ -5,6 +5,7 @@ import { ClienteService } from 'src/services/domain/cliente.service';
 import { Router } from '@angular/router';
 import { PedidoDTO } from 'src/models/pedido.dto';
 import { CartService } from 'src/services/domain/cart.service';
+import { ClienteDTO } from 'src/models/cliente.dto';
 
 @Component({
   selector: 'app-pick-address',
@@ -14,8 +15,9 @@ import { CartService } from 'src/services/domain/cart.service';
 export class PickAddressPage implements OnInit {
 
   items: EnderecoDTO[];
-
+  cliente: ClienteDTO;
   pedido: PedidoDTO;
+  endereco: EnderecoDTO;
 
   constructor(public storage: StorageService, public clienteService: ClienteService, private router: Router, public cartService: CartService) { }
 
@@ -32,8 +34,9 @@ export class PickAddressPage implements OnInit {
           cliente: {id: response['id']},
           enderecoDeEntrega: null,
           pagamento: null,
-          itens : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
+          items : cart.items.map(x => {return {quantidade: x.quantidade, produto: {id: x.produto.id}}})
         }
+        console.log(this.pedido);
        },
        error => {
          if(error.status == 403) {

@@ -3,32 +3,56 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cart</ion-title>
+    <ion-title class="title">Cart</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-thumbnail item-start>
-        <img [src]="item.produto.imageUrl || 'assets/imagem/prod.jpg'">
-      </ion-thumbnail>
-      <h2>{{item.produto.nome}}</h2>
-      <p>{{item.produto.preco | currency}}</p>
-      <ion-icon class="nolinebreak" name="remove-circle-outline" color="primary" (click)="decreaseQuantity(item.produto)"></ion-icon>
-      <p class="nolinebreak" >{{item.quantidade}}</p>
-      <ion-icon name="add-circle-outline" color="primary" (click)="increaseQuantity(item.produto)"></ion-icon>
-      <ion-icon name="trash-outline" item-end color="danger" (click)="removeItem(item.produto)"></ion-icon>
-    </ion-item>
-    <ion-item *ngIf="total() > 0">
-      <h1>Total</h1>
-      <h1 item-end>{{total()}}</h1>
-    </ion-item>
-    <ion-item *ngIf="total() <= 0">
-      <h1>Seu carrinho está vazio</h1>
-    </ion-item>
-  </ion-list>
-  <button ion-button block (click)="goOn()">Continuar comprando</button>
-  <button ion-button color="secondary" block (click)="checkout()">Finalizar pedido</button> 
-</ion-content>
 
+<ion-content padding>
+  <ion-card class="favCard" *ngFor="let item of items">
+    <ion-list>
+
+      
+          <ion-thumbnail item-start>
+            <img [src]="item.produto.imageUrl || 'assets/imagem/prod.jpg'">
+          </ion-thumbnail>
+          <p></p>
+
+          <ion-card-subtitle>Nome do Produto:</ion-card-subtitle>
+          <ion-card-subtitle>{{item.produto.nome}}</ion-card-subtitle>
+          <p></p>
+          <ion-card-subtitle>Preço Unitário:</ion-card-subtitle>
+          <ion-card-subtitle>{{item.produto.preco | currency}}</ion-card-subtitle>
+          <p></p>
+          <ion-card-subtitle>Excluir Produto</ion-card-subtitle>
+          <ion-card-subtitle><ion-icon name="trash-outline" color="danger" (click)="removeItem(item.produto)"></ion-icon></ion-card-subtitle>
+        
+              <ion-card-content>
+                <ion-icon class="nolinebreak" name="remove-circle-outline" color="primary" (click)="decreaseQuantity(item.produto)"></ion-icon>
+    
+                  <ion-card-subtitle class="nolinebreak" >Quantidade: {{item.quantidade}}</ion-card-subtitle>                  
+                  <ion-icon name="add-circle-outline" color="primary" (click)="increaseQuantity(item.produto)"></ion-icon>
+                     
+              </ion-card-content>
+        
+    </ion-list>
+  </ion-card>
+
+  <ion-card class="favCard">
+        <ion-item *ngIf="total() > 0">
+          <ion-card-title>Total: </ion-card-title>
+          <ion-card-content item-end>{{total() | currency}}</ion-card-content>
+        </ion-item>
+  </ion-card>
+
+  <ion-card>
+        <ion-item *ngIf="total() <= 0">
+          <ion-card-subtitle>Seu carrinho está vazio</ion-card-subtitle>
+        </ion-item>
+  </ion-card>
+    
+  
+
+  <ion-button class="btn-lg btn-block" ion-button block (click)="goOn()">Continuar comprando</ion-button>
+  <ion-button color="success" class="btn-lg btn-block" *ngIf="total() > 0" (click)="checkout()">Finalizar pedido</ion-button> 
+</ion-content>

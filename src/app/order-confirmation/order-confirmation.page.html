@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="title" *ngIf="codpedido">Pedido registrado!</ion-title>
+    <ion-title class="title" *ngIf="!codpedido">Confira seu pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<div *ngIf="!codpedido">
+    <ion-card class="favCard">
+      <ion-card-header translucent>
+        Itens do pedido
+      </ion-card-header>
+      
+      <IonList>
+        <IonItem *ngFor="let item of cartItems">
+          <ion-thumbnail slot="start">
+            <img [src]="item.produto.imageUrl || 'assets/imagem/prod.jpg'">
+          </ion-thumbnail> <p></p>
+          <ion-card-title>{{item.produto.nome}}</ion-card-title><p></p>
+          <ion-card-subtitle>Preço: {{item.produto.preco | currency}}</ion-card-subtitle><p></p>
+          <ion-card-subtitle>Quantidade: {{item.quantidade}}</ion-card-subtitle><p></p>
+          <p item-end>Subtotal: {{item.produto.preco * item.quantidade | currency}}</p>
+        </IonItem> 
+
+        <IonItem>
+          <h2>Total</h2>
+          <h2 item-end>{{total() | currency}}</h2>
+        </IonItem>
+      </IonList> 
+    </ion-card>
+
+    <ion-card class="favCard">
+        <ion-card-header translucent>
+          Cliente
+        </ion-card-header>
+        <IonItem>
+          <ion-card-title>Maria Silva</ion-card-title>
+          <p></p>
+          <ion-card-subtitle>mariasilva@gmail.com</ion-card-subtitle>
+        </IonItem>
+    </ion-card>
+
+    <ion-card class="favCard">
+      <ion-card-header translucent>
+        Endereço de entrega
+      </ion-card-header>
+    
+      <IonItem>
+        <ion-card-title>Avenida Matos, 105</ion-card-title>
+        <ion-card-subtitle>Sala 800 Centro CEP 3877012</ion-card-subtitle>
+        <ion-card-subtitle>São Paulo, São Paulo</ion-card-subtitle>
+      </IonItem>
+    </ion-card>
+
+    <ion-card class="favCard">
+      <ion-card-header translucent>
+        Pagamento
+      </ion-card-header>
+    
+      <IonItem>
+        <ion-card-title>Pagamento com cartão</ion-card-title>
+        <p></p>
+        <ion-card-subtitle>Parcelas: 5</ion-card-subtitle>
+      </IonItem>
+
+    </ion-card>
+
+    
+
+    <ion-button class="btn-lg btn-block" ion-button block ion-button block (click)="checkout()">Confirmar pedido</ion-button>
+    <ion-button class="btn-lg btn-block" ion-button block ion-button block outline (click)="back()">Voltar</ion-button>
+
+</div>
+
+    <div *ngIf="codpedido">
+      <ion-card class="favCard">
+          <ion-card-header translucent>
+            Seu pedido foi registrado!
+          </ion-card-header>
+          <IonItem>
+            <ion-card-title>Código do pedido: {{codpedido}}</ion-card-title><br/>
+            <ion-card-subtitle>Verifique seu email</ion-card-subtitle>
+          </IonItem>
+      </ion-card>
+
+      <ion-button class="btn-lg btn-block" ion-button block ion-button block (click)="home()">Voltar</ion-button>
+    </div>
+  
+</ion-content>

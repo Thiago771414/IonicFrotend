@@ -3,9 +3,11 @@
 
 *~
 *.sw[mnpcod]
+*.log
 .tmp
 *.tmp
 *.tmp.*
+log.txt
 *.sublime-project
 *.sublime-workspace
 .DS_Store
@@ -14,6 +16,8 @@ UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
 
 *.log
+.vscode/
+.vs/
 log.txt
 npm-debug.log*
 

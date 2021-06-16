@@ -3,25 +3,29 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>ProdutoDetail</ion-title>
+    <ion-title class="title">Produto Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
   <ion-fab slot="fixed">
     <ion-fab-button size="small" (click)="cart()"><ion-icon name="cart-outline"></ion-icon></ion-fab-button>
   </ion-fab>
-  <ion-card>
+
+  <ion-card class="favCard">
     <img [src]="item?.imageUrl || 'assets/imagem/prod.jpg'"/>
     <ion-card-content>
-      <ion-card-title>
+      <ion-card-subtitle>
         {{item?.nome}}
-        </ion-card-title>
-      <p>
-        {{item?.preco | currency}}
-      </p>
+        
+      </ion-card-subtitle><br/>
+        <ion-card-title>
+          {{item?.preco | currency}}
+        </ion-card-title><br/>
+        Para adicionar o Produto ao carrinho, pressione o botão adicionar ao carrinho.
     </ion-card-content>
   </ion-card>
 
-  <button ion-button block outline (click)="addToCart(item)">Adicionar ao carrinho</button>
+  <ion-button class="btn-lg btn-block" (click)="addToCart(item)">Adicionar ao carrinho</ion-button>
 </ion-content>

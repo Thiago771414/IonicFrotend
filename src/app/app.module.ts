@@ -19,6 +19,7 @@ import { ProdutoService } from 'src/services/domain/produto.service';
 import { CartService } from 'src/services/domain/cart.service';
 //import { CidadeService } from 'src/services/domain/cidade.service';
 //import { EstadoService } from 'src/services/domain/estado.service';
+import { ImageUtilService } from 'src/services/image-util.service';
 
 
 //importar o submodulo
@@ -52,7 +53,8 @@ import { CartService } from 'src/services/domain/cart.service';
     StorageService,
     ClienteService,
     ProdutoService,
-    CartService
+    CartService,
+    ImageUtilService
     //CidadeService,
     //EstadoService
   ],

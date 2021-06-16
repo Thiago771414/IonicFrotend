@@ -1,9 +1,10 @@
 h1 {
   font-family: ‘Pacifico’;
-  color: rgb(243, 234, 234);
+  color: rgb(245,255,250);
   text-align: center;
   font-size: 50px;
   padding-top: 50px;
+  margin-left: 70px;
   }
 
   h1 span {
@@ -15,7 +16,7 @@ h1 {
   }
 
   ion-content.background{
-    --background: url(../../assets/imagem/recorte.png) 0 0/100% 100% no-repeat;
+    --background: url(../../assets/imagem/loja2.jpg) 0 0/100% 100% no-repeat;
 
   }
 
@@ -23,7 +24,8 @@ h1 {
     background: transparent;
     width: 75%;
     margin: auto;
-    margin-top: 60px;
+    margin-top: 250px;
+    margin-left: 50px;
   }
 
   .btn-outline-primary {
@@ -36,6 +38,14 @@ h1 {
 
   .icone {
     align-self: center;
+  }
+
+  ion-item.entrar {
+    margin-top: 30px;
+  }
+
+  ion-item.conta {
+    margin-top: 10px;
   }
 
  

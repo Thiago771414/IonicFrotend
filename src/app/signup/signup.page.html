@@ -3,19 +3,19 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>SigUp</ion-title>
+    <ion-title class="title">SigUp</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+<ion-content padding ="backgrounclass">
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()" class="formulario">
 
-    <ion-tem>
+    <ion-tem color="secondary">
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
     </ion-tem>
     <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Valor inválido</p>
-    <ion-item>
+    <ion-item color="secondary">
       <ion-label stacked>Email*</ion-label>
       <ion-input formControlName="email" type="text"></ion-input>
     </ion-item>
@@ -23,7 +23,7 @@
     
     
       <ion-radio-group formControlName="tipo">
-      <ion-list-header>
+      <ion-list-header class="header">
         Tipo de cliente
       </ion-list-header>
     
@@ -106,7 +106,7 @@
       </ion-select>
     </ion-item>
 
-    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
+    <ion-button class="btn-lg btn-block" type="submit" [disabled]="formGroup.invalid">Criar conta</ion-button>
     
   </form>
 </ion-content>

@@ -27,39 +27,35 @@ export class AppComponent implements OnInit {
     {
       title: 'Home',
       url: '/folder/Inbox',
-      icon: 'mail'
+      icon: 'home'
     },
     {
       title: 'Categorias',
       url: '/categorias',
-      icon: 'paper-plane'
+      icon: 'phone-portrait'
     },
     {
       title: 'Profile',
       url: '/profile',
-      icon: 'heart'
+      icon: 'images'
     },
     {
       title: 'Logout',
       url: '/folder/logout',
-      icon: 'archive'
-    },
-    {
-      title: 'Produtos',
-      url: '/produtos',
-      icon: 'trash'
+      icon: 'log-out'
     },
     {
       title: 'sigUp',
       url: '/signup',
-      icon: 'warning'
+      icon: 'build'
     },
     {
       title: 'Carrinho',
-      url: '/cart'
+      url: '/cart',
+      icon: 'basket'
     }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  
 
   constructor(
     private platform: Platform,

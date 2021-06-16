@@ -3,38 +3,42 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Forma de Pagamento</ion-title>
+    <ion-title class="title">Forma Pagamento</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-
-  <form [formGroup]="formGroup" (ngSubmit)="nextPage(); $event.preventDefault()">
-
-    <ion-radio-group formControlName="@type">
-
-      <ion-list-header>
+<ion-content padding ="backgrounclass">
+  <form [formGroup]="formGroup" (ngSubmit)="nextPage(); $event.preventDefault()" class="formulario">
+    
+      <ion-radio-group formControlName="@type">
+      <ion-list-header class="subTitle">
         Tipo de pagamento
       </ion-list-header>
+    
+          <ion-item>
+            <ion-label>Pagamento com cartão</ion-label>
+            <ion-radio checked="true" value="pagamentoComCartao"></ion-radio>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Pagamento com cartão</ion-label>
-        <ion-radio checked="true" value="pagamentoComCartao"></ion-radio>
-      </ion-item>
+          <ion-item>
+            <ion-label>Pagamento com boleto</ion-label>
+            <ion-radio value="pagamentoComBoleto"></ion-radio>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Pagamento com boleto</ion-label>
-        <ion-radio value="pagamentoComBoleto"></ion-radio>
-      </ion-item>
-
-    </ion-radio-group>
+      </ion-radio-group>
+    
 
     <ion-item *ngIf="formGroup.value['@type'] == 'pagamentoComCartao'">
-      <ion-label stacked>Parcelas com Cartão</ion-label>
+      <ion-label>Parcelas no cartão</ion-label>
+
       <ion-select formControlName="numeroDeParcelas">
-        <ion-select-option *ngFor="let n of parcelas; first as f" [value]="n" [selected]="f">{{n}}</ion-select-option>
+        <ion-select-option  *ngFor="let n of parcelas; first as f" [value]="n" [selected]="f">{{n}}</ion-select-option>
       </ion-select>
+
     </ion-item>
-    <button ion-button block type="submit" [disabled]="formGroup.invalid">Próximo</button>
+
+    <ion-button class="btn-lg btn-block" ion-button block type="submit" [disabled]="formGroup.invalid">Próximo</ion-button>
+
   </form>
+  
 </ion-content>

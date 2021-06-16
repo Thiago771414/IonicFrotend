@@ -3,21 +3,33 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Categorias</ion-title>
+    <ion-title class="title">Categorias</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content fullscreen>
   <ion-fab slot="fixed">
     <ion-fab-button size="small" (click)="cart()"><ion-icon name="cart-outline"></ion-icon></ion-fab-button>
   </ion-fab>
+
   <ion-list>
-    <ion-item ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">  
-        <ion-thumbnail item-start>
-          <img src="{{bucketUrl}}/cat{{item.id}}.jpg">
+    <ion-item ion-item *ngFor="let item of items" (click)="showProdutos(item.id)">
+ 
+      <ion-card class="favCard">
+        <ion-thumbnail>
+        <img src="{{bucketUrl}}/cat{{item.id}}.jpg" />
         </ion-thumbnail>
-        <h2>{{ item.nome }}</h2>
+        <ion-card-header>
+          <ion-card-subtitle>Categoria</ion-card-subtitle>
+          <ion-card-title>{{ item.nome }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Para visualizar os produtos aperte aqui ou deslize para escolher outra categoria.
+        </ion-card-content>
+      </ion-card>
+        
     </ion-item>
   </ion-list>
+
 </ion-content>
 

@@ -1,33 +1,32 @@
 <ion-pane class="login-custom">
 
   <ion-content [fullscreen]="true" class="background">
-  <h1>homeOrders <span>security</span></h1>
+      <h1 slot="fixed">homeOrders <span>security</span></h1>
 
-<ion-list class="bg-transparent">
-          
-          <ion-item color="none" lines="none">         
-              <ion-label position="floating">Usuário </ion-label> 
-              <!--Binding de atributo [] html com binding de atributo evento () -->
-              <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>        
-          </ion-item>
-              
-          <ion-item color="none" lines="none">
-            <ion-label position="floating">Senha </ion-label>
-            <!--Binding de atributo [] html com binding de atributo evento () -->
-            <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
-          </ion-item>
-          <!--Redireciona para categorias a parir do botão-->
-          <ion-item color="none" lines="none"> <button type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="login()">Entrar</button>          
-          </ion-item>
+      <ion-list slot="fixed" class="bg-transparent">
 
-          <ion-item color="none" lines="none"> <button type="button" class="btn btn-outline-light btn-lg btn-block" (click)="signup()">Criar Conta</button>
-         
-            
-          </ion-item>
-          
-</ion-list>
+              <ion-item color="none" lines="none">         
+                  <ion-label position="floating">Usuário </ion-label> 
+                  <!--Binding de atributo [] html com binding de atributo evento () -->
+                  <ion-input [(ngModel)]="creds.email" name="email" type="text"></ion-input>        
+              </ion-item>
+                  
+              <ion-item color="none" lines="none" class="senha">
+                <ion-label position="floating">Senha </ion-label>
+                <!--Binding de atributo [] html com binding de atributo evento () -->
+                <ion-input [(ngModel)]="creds.senha" name="senha" type="password"></ion-input>
+              </ion-item>
+
+              <!--Redireciona para categorias a parir do botão-->
+              <ion-item class="entrar" color="none" lines="none"> <button type="button" class="btn btn-danger btn-lg btn-block" (click)="login()">Entrar</button>          
+              </ion-item>
+
+              <ion-item class="conta" color="none" lines="none"> <button type="button" class="btn btn-info btn-lg btn-block" (click)="signup()">Criar Conta</button>             
+              </ion-item>             
+      </ion-list>
 
   </ion-content>
+
 </ion-pane>
 
 
