@@ -1,5 +1,5 @@
 # Projeto Mobile
-  Projeto mobile Ionic / Angular / Java / Amazon S3 / PlayStore
+  Spring Boot, Hibernate, REST, Ionic, JWT, S3, MySQL, MongoDB
 
 # Sobre o projeto
 
