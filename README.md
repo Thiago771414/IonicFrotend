@@ -19,6 +19,9 @@ Projeto full stack completo! Java Spring Boot no back end e Ionic no front end. 
 ## Front end / Back end
 - Angular / Ionic / Java / MySql 
 
+# Sobre o Curso
+https://www.udemy.com/course/spring-boot-ionic/
+
 # Autor
 
 Thiago Reis Lima
