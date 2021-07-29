@@ -7,7 +7,7 @@ Projeto full stack completo! Java Spring Boot no back end e Ionic no front end. 
 
 # Tecnologias utilizadas
 
-## Front end
+## Front end / Back end
 - Angular / Ionic / Java / MySql 
 
 # Autor
