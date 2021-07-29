@@ -7,6 +7,7 @@ Projeto full stack completo! Java Spring Boot no back end e Ionic no front end. 
 
 ## Layout mobile
 ![Mobile 1](https://github.com/Thiago771414/imagensProjetos/blob/main/slices/mobile/mobile1.png)
+![Mobile 2](https://github.com/Thiago771414/imagensProjetos/blob/main/slices/mobile/mobile2.jpg)
 
 # Tecnologias utilizadas
 
